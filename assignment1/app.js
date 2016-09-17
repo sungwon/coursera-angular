@@ -6,10 +6,15 @@ angular.module('LunchCheckApp', [])
 
 LunchCheckController.$inject = ['$scope'];
 function LunchCheckController($scope) {
+  $scope.dishes = '';
   $scope.checkDishes = function() {
-    var dishArray = $scope.dishes.split(',');
-    var numDishes = noBlanks(dishArray).length;
-    $scope.message = numDishes > 3 ? 'Too much!' : 'Enjoy!';
+    if ($scope.dishes.length < 1) {
+      $scope.message = 'Please enter data first';
+    } else {
+      var dishArray = $scope.dishes.split(',');
+      var numDishes = noBlanks(dishArray).length;
+      $scope.message = numDishes > 3 ? 'Too much!' : 'Enjoy!';
+    }
   }
 
   function noBlanks(input) {
