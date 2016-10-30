@@ -38,11 +38,8 @@ function NarrowItDownController(MenuSearchService) {
   self.narrowItDown = function() {
     var promise = MenuSearchService.getMatchedMenuItems(self.searchTerm);
     promise.then(function(response) {
-      if (response.length > 0) {
-        self.found = response;
-      } else {
-        self.found = false;
-      }
+      self.found = response;
+      console.log(response);
     })
     .catch(function (error) {
       console.log(error);
